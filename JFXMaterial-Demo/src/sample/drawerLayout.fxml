@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import application.MaterialText?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+      prefWidth="240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.DrawerController">
+    <children>
+        <ImageView fitHeight="150.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/sample/drawerImg.jpg"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@/sample/cat.png"/>
+            </image>
+        </ImageView>
+        <VBox fx:id="vbox" layoutX="2.0" layoutY="150.0" prefHeight="448.0" prefWidth="240.0">
+            
+        </VBox>
+        <MaterialText fill="WHITE" layoutX="92.0" layoutY="65.0" text="Jhon Doe" wrappingWidth="103.0">
+            <font>
+                <Font size="21.0"/>
+            </font>
+        </MaterialText>
+    </children>
+</Pane>

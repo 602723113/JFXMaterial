@@ -1,0 +1,40 @@
+
+.material-text-input{
+-fx-background-color: transparent;
+-fx-border-color: transparent;
+
+}
+.material-button{
+    -fx-background-color: #F9F9F9;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, gray, 2, 0,0,1);
+
+}
+.material-button:hover{
+}
+.material-button:pressed{
+    -fx-background-color:#EDEDED;
+}
+.material-toolbar{
+        -fx-effect: dropshadow(gaussian, gray, 2, 0,0,1);
+        -fx-background-color: #2196F3;
+}
+.material-drawer{
+        -fx-effect: dropshadow(gaussian, gray, 2, 0,0,1);
+        -fx-background-color:#FEFEFE;
+}
+
+.material-item{
+    -fx-background-color: transparent;
+    -fx-text-color:white;
+}
+.material-item:pressed{
+    -fx-background-color: transparent;
+        -fx-text-color:white;
+
+
+}
+.material-toolbar{
+        -fx-effect: dropshadow(gaussian, gray, 2, 0,0,1);
+        -fx-background-color: #2196F3;
+}

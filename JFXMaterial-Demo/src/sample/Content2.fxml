@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import application.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import application.Card?>
+
+<Pane fx:controller="sample.Content2Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Card fx:id="card" layoutX="200.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFF;" />
+   </children>
+</Pane>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import application.MaterialText?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<Pane prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <MaterialText fill="#797878" layoutX="149.0" layoutY="282.0" text="Welcome from Roboto Font">
+         <font>
+            <Font size="22.0" />
+         </font></MaterialText>
+    </children>
+</Pane>
