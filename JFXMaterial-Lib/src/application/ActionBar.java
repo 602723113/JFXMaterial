@@ -6,7 +6,6 @@ import javafx.animation.TranslateTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,11 +18,11 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 
-
 /**
  * Created by tareq on 7/13/15.
  */
 public class ActionBar extends Pane {
+
     private MaterialText materialText;
     private RotateTransition rotateTransition;
     DrawerLayout drawerLayout;
@@ -50,7 +49,7 @@ public class ActionBar extends Pane {
         pane.setRotate(val * 90);
     }
 
-   public ActionBar(String title) {
+    public ActionBar(String title) {
         super();
         DoubleProperty heightProperty = new SimpleDoubleProperty();
         hBox = new HBox();
@@ -62,8 +61,9 @@ public class ActionBar extends Pane {
         materialText = new MaterialText("", 17);
         sceneProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                if (!getScene().getStylesheets().contains(getClass().getResource("application.css").toExternalForm()))
+                if (!getScene().getStylesheets().contains(getClass().getResource("application.css").toExternalForm())) {
                     getScene().getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                }
                 newValue.widthProperty().addListener((ob, o, n) -> {
                     setPrefSize(n.doubleValue(), 100);
                     hBox.setPrefWidth(n.doubleValue());
@@ -76,9 +76,7 @@ public class ActionBar extends Pane {
         line.setTranslateY(97);
         hBox.setFillHeight(true);
         hBox.setAlignment(Pos.CENTER);
-
         getStyleClass().add("material-toolbar");
-
         setTitle(title);
         getChildren().addAll(hBox, line);
     }
@@ -99,31 +97,34 @@ public class ActionBar extends Pane {
         return contentArrayList;
     }
 
+    public void setPagePosition(int position) {
+        if (animationFinished && (position - currentPosition) != 0) {
+            animationFinished = false;
+            TranslateTransition transition = new TranslateTransition();
+            transition.setByX(((TabTitle) (hBox.getChildren().get(0))).getWidth() * (position - currentPosition));
+            transition.setDuration(Duration.millis(150 * Math.abs(position - currentPosition)));
+            transition.setInterpolator(Interpolator.LINEAR);
+            transition.setNode(line);
+            transition.setOnFinished(e -> {
+                currentPosition = position;
+                animationFinished = true;
+            });
+            transition.play();
+        }
+    }
 
     public void addTab(TabTitle tabTitle, Pane content) {
         addContent(content);
         tabTitle.setPrefSize(70, 48);
         hBox.getChildren().add(tabTitle);
         tabTitle.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                    int pos = hBox.getChildren().size() - 1;
+            int tabPosition = hBox.getChildren().size() - 1;
 
-                    @Override
-                    public void handle(MouseEvent event) {
-                        if (animationFinished && (pos - currentPosition) != 0) {
-                            animationFinished = false;
-                            TranslateTransition transition = new TranslateTransition();
-                            transition.setByX(tabTitle.getWidth() * (pos - currentPosition));
-                            transition.setDuration(Duration.millis(150 * Math.abs(pos - currentPosition)));
-                            transition.setInterpolator(Interpolator.LINEAR);
-                            transition.setNode(line);
-                            transition.setOnFinished(e -> {
-                                currentPosition = pos;
-                                animationFinished = true;
-                            });
-                            transition.play();
-                        }
-                    }
-                }
+            @Override
+            public void handle(MouseEvent event) {
+                setPagePosition(tabPosition);
+            }
+        }
         );
         for (int i = 0; i < hBox.getChildren().size(); i++) {
 
@@ -141,7 +142,6 @@ public class ActionBar extends Pane {
         }
 
     }
-
 
     public void setTitle(String title) {
         materialText.setText(title);
@@ -195,7 +195,6 @@ public class ActionBar extends Pane {
                 }
             }
         });
-
 
     }
 }
