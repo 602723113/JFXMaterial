@@ -9,4 +9,4 @@ The library contains:
   - ToggleButton, RadioButton, InputText, Button, MaterialText (Roboto font)
 
 #### Demonstration:
-    https://www.youtube.com/watch?v=EXr5S4ApAUc
+<img src="./demo-files/demo.gif"/>
